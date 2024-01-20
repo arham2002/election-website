@@ -38,13 +38,13 @@ async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
       range: "A1:H"
     });
 
-    console.log(response)
     cachedData = response.data;
     lastFetchTimestamp = currentTime;
 
     return cachedData;
   } catch (error) {
-    console.error("Error fetching candidates:", error);
+    console.error(`Error fetching candidates: the credentials are ${process.env.GOOGLE_CLIENT_EMAIL} AND ${process.env.GOOGLE_PRIVATE_KEY}`, error);
+    
     throw error;
   }
 ;}
@@ -163,7 +163,7 @@ export async function getSearchedCandidateByDist(term: string, index: number): P
     console.error("Missing required environment variables. Please check your configuration.");
     process.exit(1); // Exit the process or handle the missing variables accordingly
   }
-  
+
   try {
     const data = await getCandidates();
 
