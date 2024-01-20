@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "pakistan-election-411415",
+  "private_key_id": "78697674a86f26d410398ba60a5b13afadf99085",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCcCfuWBCSI6jnS\niKZjujG7PM3XMjEu7e0JSiXEC1gBJFmqenCCy6xrMI/TrAPyNVym+m+k9jrbSQob\nfL6LZ0T9itumMksH2hDme0hZ57nAywTUnplxU6/sd53F8SRCmt4joRqob4tnrW5r\nVNLZmzuwheIgISSaqFlqMWmeZdPI522tzotGGdBy7tAqRUnX2keE1IiM9TvHJdna\nmp595Y0egQqQyYDkI7vyjvOujRN5JFOVC7+ydNoshvcKFOvyOfpApIQ1sYSLeoSD\ng8V4Dhb+sjCyYaRR54RsJLTaiJvqxIN6jtPaOEDJkxHecPMGgbSOmBeQiWbmoVfk\nbyjTyo5zAgMBAAECgf9YYU8eqToIUqJtnPihg9SnOMleGg/BhQG9QUIiyEoQW4Zu\nCOuxKat/CwJr4gJaLd9MtIyH4u9zROt0pjNGwjdRZFUEzXex+tGXujxAr/+GM3eI\n9kvy5HPAe//hHbRsBUvM4nM28/cBwjnIkULb/hDQ6wQpLpyM/M2oWFR6YzKRl6Be\nW4iXliXnr2mxKQT/pQGZRtrSyltpzpJaPM9VLiwdn2BVsu0JcTCogywA28+Mzndp\n44p0uk4dM2dd06B+7LZ2TJ8Yg4V4WUwpDQQ6ljrtTJsQ9HfYcxaKjom6P/3fjoYU\nVGMAgnMPOF11ny72kRAtk5u649EPXB4LKXecLIkCgYEA2NZzoYrOSAb1Dqm/L2nf\njMk1V2MTEtJkLJPIZQH7HnxLl9bxYljzD2mTIljEdl9JYM1q5VmmyzjrtYOGbn4F\nCH0rki0wC92ZQ3NMJ4El7p5SvA+oaCfvuxwiP+VF3gvZCNXMEJ3fSIlEvChvKNOe\nnTI8BxBGfGSl9FEryARomd0CgYEAuDh8oW8qcl4lVSO0hBSH9lS438XgE2j9ux6N\nFSq4GyGwKmpDWwmoVBT8Hht3umSuyATLTkMk/ZNgFGLW40jcTOM7ATmzlPS60rPL\nm7SEenLb3eviqfpxuXBqe4SkV0DSD5blQACAx5PeW5K4RMCR1LjNb0wuh7oqvqt8\nvQT7TI8CgYEAnhl+pcI3NX0dIFvT8hYX0ObD5btvJMISGA6Ihl0zY77svwERbsu8\nLPilNt3SIRzIu7QKxL7hRjtyYR5M3jM0KERbiHE6Huyr2uouFH+t0JXPbR9dgtPb\nj2mr7zqT/ppU3IRGDbeOHa04WJiCtBnYBHWkHuJXAkvAVKr6aRQN0GECgYEAiyIW\ndvJ3s4MJXSEnYC4FdfUM3+0ZzG8aWy26zkbCX7N00sQI9QP5Pu/Oboq+RWdvXh/I\n0OYDVQTuptbzhxtrTyK7WLSUviaLx0EFwSZ4e+atyhEy0sAVDkIqGfnXCRMq051a\nrZjzqkgywySvyTVLrsaYWbvG1Lm1OOZZwoS1q18CgYAQXGuv4e+Fe5PJ0FaDzo22\nBLMz3N981aqYyvvqxpIIAQnDYA/VYyZX0+JmCCivDnkzkQVOi/dcnzPXBHrfVryS\nyWh/3mq5LMswT6RYJGHpnR2GiPJIgmuVWR31dX1q6Q4NimpNEHczsgR7GvuEBc0i\nhMzkujHQFMkHuPDZTe4Tfw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "election-candidates@pakistan-election-411415.iam.gserviceaccount.com",
+  "client_id": "102727350154079927019",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/election-candidates%40pakistan-election-411415.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
