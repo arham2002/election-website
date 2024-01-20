@@ -4,6 +4,7 @@ let cachedData: sheets_v4.Schema$ValueRange | undefined;
 let lastFetchTimestamp: number = 0;
 const cacheTimeout = 1; // Cache timeout in milliseconds (5 minutes)
 
+
 const auth = new google.auth.GoogleAuth({
   credentials: {
     client_email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -15,6 +16,7 @@ const auth = new google.auth.GoogleAuth({
     'https://www.googleapis.com/auth/spreadsheets'
   ]
 });
+
 const sheets = google.sheets({ version: 'v4', auth });
 
 async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
@@ -25,12 +27,18 @@ async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
     return cachedData;
   }
 
+  if (!process.env.GOOGLE_CLIENT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY || !process.env.GOOGLE_SHEET_ID) {
+    console.error("Missing required environment variables. Please check your configuration.");
+    process.exit(1); // Exit the process or handle the missing variables accordingly
+  }
+
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: "A1:H"
     });
 
+    console.log(response)
     cachedData = response.data;
     lastFetchTimestamp = currentTime;
 
@@ -56,6 +64,11 @@ export async function getSearchedCandidate(term: string, index: number): Promise
   try {
     const data = await getCandidates();
 
+    if (!process.env.GOOGLE_CLIENT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY || !process.env.GOOGLE_SHEET_ID) {
+      console.error("Missing required environment variables. Please check your configuration.");
+      process.exit(1); // Exit the process or handle the missing variables accordingly
+    }
+
     const filteredData = data.values?.filter((item) => {
       const cleanedItem = cleanString(item[index]);
       const cleanedTerm = cleanString(term);
@@ -74,6 +87,12 @@ export async function getSearchedCandidate(term: string, index: number): Promise
 
 
 export async function getDistricts() {
+
+  if (!process.env.GOOGLE_CLIENT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY || !process.env.GOOGLE_SHEET_ID) {
+    console.error("Missing required environment variables. Please check your configuration.");
+    process.exit(1); // Exit the process or handle the missing variables accordingly
+  }
+
   try {
     let districts: string[][] | undefined = [];
     const data = await getCandidates();
@@ -92,6 +111,12 @@ export async function getDistricts() {
 }
 
 export async function getSeats() {
+
+  if (!process.env.GOOGLE_CLIENT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY || !process.env.GOOGLE_SHEET_ID) {
+    console.error("Missing required environment variables. Please check your configuration.");
+    process.exit(1); // Exit the process or handle the missing variables accordingly
+  }
+
   try {
     let districts: string[][] | undefined = [];
     const data = await getCandidates();
@@ -110,6 +135,12 @@ export async function getSeats() {
 }
 
 export async function getSeatsId() {
+
+  if (!process.env.GOOGLE_CLIENT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY || !process.env.GOOGLE_SHEET_ID) {
+    console.error("Missing required environment variables. Please check your configuration.");
+    process.exit(1); // Exit the process or handle the missing variables accordingly
+  }
+
   try {
     let seats: string[][] | undefined = [];
     const data = await getCandidates();
@@ -127,6 +158,12 @@ export async function getSeatsId() {
 }
 
 export async function getSearchedCandidateByDist(term: string, index: number): Promise<string[][] | undefined> {
+
+  if (!process.env.GOOGLE_CLIENT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY || !process.env.GOOGLE_SHEET_ID) {
+    console.error("Missing required environment variables. Please check your configuration.");
+    process.exit(1); // Exit the process or handle the missing variables accordingly
+  }
+  
   try {
     const data = await getCandidates();
 
