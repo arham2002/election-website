@@ -6,6 +6,7 @@ const cacheTimeout = 1; // Cache timeout in milliseconds (5 minutes)
 
 const email = process.env.GOOGLE_CLIENT_EMAIL
 const key = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+const sheetId = process.env.GOOGLE_SHEET_ID
 
 
 const auth = new google.auth.GoogleAuth({
@@ -25,7 +26,7 @@ const sheets = google.sheets({ version: 'v4', auth });
 
 async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
   const currentTime = new Date().getTime();
-  console.log(key)
+  console.log(sheetId)
   // Use cached data if it exists and is within the cache timeout
   if (cachedData && currentTime - lastFetchTimestamp < cacheTimeout) {
     return cachedData;
@@ -38,7 +39,7 @@ async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
 
   try {
     const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      spreadsheetId: sheetId,
       range: "A1:H"
     });
 
@@ -47,7 +48,7 @@ async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
 
     return cachedData;
   } catch (error) {
-    console.error(`Error fetching candidates: the credentials are ${process.env.GOOGLE_CLIENT_EMAIL} AND ${process.env.GOOGLE_PRIVATE_KEY}`, error);
+    console.error("Error fetching candidates")
     
     throw error;
   }
