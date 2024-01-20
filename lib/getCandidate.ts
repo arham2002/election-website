@@ -4,11 +4,15 @@ let cachedData: sheets_v4.Schema$ValueRange | undefined;
 let lastFetchTimestamp: number = 0;
 const cacheTimeout = 1; // Cache timeout in milliseconds (5 minutes)
 
+const email = process.env.GOOGLE_CLIENT_EMAIL
+const key = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+
 
 const auth = new google.auth.GoogleAuth({
+
   credentials: {
-    client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY
+    client_email: email,
+    private_key: key
   },
   scopes: [
     'https://www.googleapis.com/auth/drive',
@@ -21,7 +25,7 @@ const sheets = google.sheets({ version: 'v4', auth });
 
 async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
   const currentTime = new Date().getTime();
-
+  console.log(key)
   // Use cached data if it exists and is within the cache timeout
   if (cachedData && currentTime - lastFetchTimestamp < cacheTimeout) {
     return cachedData;
@@ -43,7 +47,7 @@ async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
 
     return cachedData;
   } catch (error) {
-    console.error(`ERROR FETVHING CANDIDATES`, error);
+    console.error(`Error fetching candidates: the credentials are ${process.env.GOOGLE_CLIENT_EMAIL} AND ${process.env.GOOGLE_PRIVATE_KEY}`, error);
     
     throw error;
   }
