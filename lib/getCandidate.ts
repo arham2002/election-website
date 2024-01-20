@@ -2,7 +2,7 @@ import { google, sheets_v4 } from "googleapis";
 
 let cachedData: sheets_v4.Schema$ValueRange | undefined;
 let lastFetchTimestamp: number = 0;
-const cacheTimeout = 1; // Cache timeout in milliseconds (5 minutes)
+const cacheTimeout = 24 * 60 * 60 * 1000;
 
 const email = process.env.GOOGLE_CLIENT_EMAIL
 const key = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
@@ -26,7 +26,6 @@ const sheets = google.sheets({ version: 'v4', auth });
 
 async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
   const currentTime = new Date().getTime();
-  console.log(sheetId)
   // Use cached data if it exists and is within the cache timeout
   if (cachedData && currentTime - lastFetchTimestamp < cacheTimeout) {
     return cachedData;
