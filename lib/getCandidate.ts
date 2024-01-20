@@ -8,7 +8,7 @@ const cacheTimeout = 1; // Cache timeout in milliseconds (5 minutes)
 const auth = new google.auth.GoogleAuth({
   credentials: {
     client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+    private_key: process.env.GOOGLE_PRIVATE_KEY
   },
   scopes: [
     'https://www.googleapis.com/auth/drive',
@@ -43,7 +43,7 @@ async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
 
     return cachedData;
   } catch (error) {
-    console.error(`Error fetching candidates: the credentials are ${process.env.GOOGLE_CLIENT_EMAIL} AND ${process.env.GOOGLE_PRIVATE_KEY}`, error);
+    console.error(`ERROR FETVHING CANDIDATES`, error);
     
     throw error;
   }
