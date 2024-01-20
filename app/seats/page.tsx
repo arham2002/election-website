@@ -25,7 +25,8 @@ async function seatsPage() {
         {
             kpkSeats?.map((seat) => (
               
-              <Link href={`/search/${getFirstWord(seat)}`} className='text-sm lg:text-base w-[45%] lg:w-[33%] inline-block mb-2 lg:mb-0 text-blue-700 hover:text-black underline'>{seat}</Link>
+              <Link href={`/search/${getFirstWord(seat)}`}
+              key={seat.toString()} className='text-sm lg:text-base w-[45%] lg:w-[33%] inline-block mb-2 lg:mb-0 text-blue-700 hover:text-black underline'>{seat}</Link>
             ))
         }
         </div>
@@ -35,7 +36,8 @@ async function seatsPage() {
         <div className='flex flex-wrap justify-between'>
         {
             punSeats?.map((seat) => (
-              <Link href={`/search/${getFirstWord(seat)}`} className='text-sm lg:text-base w-[45%] lg:w-[33%] inline-block mb-2 lg:mb-0 text-blue-700 hover:text-black underline'>{seat}</Link>
+              <Link href={`/search/${getFirstWord(seat)}`}
+              key={seat.toString()} className='text-sm lg:text-base w-[45%] lg:w-[33%] inline-block mb-2 lg:mb-0 text-blue-700 hover:text-black underline'>{seat}</Link>
             ))
           }
         </div>
@@ -45,7 +47,8 @@ async function seatsPage() {
         <div className='flex flex-wrap justify-between'>
         {
             sindhSeats?.map((seat) => (
-              <Link href={`/search/${getFirstWord(seat)}`} className='text-sm lg:text-base w-[45%] lg:w-[33%] inline-block mb-2 lg:mb-0 text-blue-700 hover:text-black underline'>{seat}</Link>
+              <Link href={`/search/${getFirstWord(seat)}`} 
+              key={seat.toString()} className='text-sm lg:text-base w-[45%] lg:w-[33%] inline-block mb-2 lg:mb-0 text-blue-700 hover:text-black underline'>{seat}</Link>
             ))
           }
         </div>
@@ -55,7 +58,8 @@ async function seatsPage() {
         <div className='flex flex-wrap justify-between'>
         {
             balochSeats?.map((seat) => (
-              <Link href={`/search/${getFirstWord(seat)}`} className='text-sm lg:text-base w-[45%] lg:w-[33%] inline-block mb-2 lg:mb-0 text-blue-700 hover:text-black underline'>{seat}</Link>
+              <Link href={`/search/${getFirstWord(seat)}`}
+              key={seat.toString()} className='text-sm lg:text-base w-[45%] lg:w-[33%] inline-block mb-2 lg:mb-0 text-blue-700 hover:text-black underline'>{seat}</Link>
             ))
           }
         </div>

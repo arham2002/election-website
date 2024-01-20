@@ -19,6 +19,7 @@ async function districtPage() {
             kpkDistricts?.map((district) => (
               <Link 
                 href={`/search/${district}`}
+                key={district.toString()}
                 className='inline-block mb-2 lg-mb- text-blue-700 hover:text-black underline'
               >{district}</Link>
             ))
@@ -33,6 +34,7 @@ async function districtPage() {
             punDistricts?.map((district) => (
               <Link 
                 href={`/search/${district}`}
+                key={district.toString()}
                 className='inline-block mb-2 lg-mb-0 text-blue-700 hover:text-black underline'
               >{district}</Link>
             ))
@@ -47,6 +49,7 @@ async function districtPage() {
             sindhDistricts?.map((district) => (
               <Link 
                 href={`/search/${district}`}
+                key={district.toString()}
                 className='inline-block mb-2 lg-mb-0 text-blue-700 hover:text-black underline'
               >{district}</Link>
             ))
@@ -61,6 +64,7 @@ async function districtPage() {
             balochDistricts?.map((district) => (
               <Link 
                 href={`/search/${district}`}
+                key={district.toString()}
                 className='inline-block mb-2 lg-mb-0 text-blue-700 hover:text-black underline'
               >{district}</Link>
             ))
