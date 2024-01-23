@@ -2,8 +2,7 @@ import { google, sheets_v4 } from "googleapis";
 
 let cachedData: sheets_v4.Schema$ValueRange | undefined;
 let lastFetchTimestamp: number = 0;
-const cacheTimeout = 1;
-// 24 * 60 * 60 * 1000
+const cacheTimeout = 24 * 60 * 60 * 1000 * 4;
 const email = process.env.GOOGLE_CLIENT_EMAIL
 const key = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
 const sheetId = process.env.GOOGLE_SHEET_ID
