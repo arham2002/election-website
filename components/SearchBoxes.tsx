@@ -8,9 +8,8 @@ async function SearchBoxes() {
   const flattenedSeats = seats?.flat()
 
   const districts =  await getDistricts();
-  const flatDistricts = districts?.flat().flatMap((str) => (str as string).split(/,\s*|\s+and\s+/));
-
-
+  const flatDistricts = districts?.flat().flatMap((str) => (str as string).split(/,\s+and\s+|,\s*|\s+and\s+/))
+  
   return (
       <div className='lg:mt-56 text-gray-500'>
         <div className='flex justify-evenly flex-col lg:flex-row items-center'>

@@ -15,7 +15,7 @@ import { useEffect, useRef, useState } from "react";
 // Import statements...
 
 const formSchema = z.object({
-  input: z.string().min(2).max(50),
+  input: z.string().min(2).max(200),
 });
 
 type Props = {
@@ -28,6 +28,8 @@ function SearchInput({ keyword, suggestions }: Props) {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchBoxRef = useRef<HTMLInputElement>(null);
   const suggestionClickedRef = useRef(true);
+
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,6 +37,7 @@ function SearchInput({ keyword, suggestions }: Props) {
     },
   });
 
+ 
   const handleInputChange = (value: string) => {
     form.setValue("input", value);
     setShowSuggestions(value.trim().length > 0);
@@ -44,25 +47,21 @@ function SearchInput({ keyword, suggestions }: Props) {
 
     suggestionClickedRef.current = true;
 
-    // Set input value and hide suggestions
     form.setValue("input", value);
     setShowSuggestions(false);
 
-    // Trigger form submission
     form.handleSubmit(onSubmit)();
   };
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     const cleanedInput = values.input.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
     router.push(`/search/${cleanedInput}`);
+    
   };
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
-  
-      // Log the value of suggestionClickedRef
-  
-      // Close suggestions dropdown if clicked outside of it, the search box, or the suggestion box
+
       if (
         !suggestionClickedRef.current &&
         searchBoxRef.current &&
@@ -76,11 +75,8 @@ function SearchInput({ keyword, suggestions }: Props) {
     };
   
     document.addEventListener("mousedown", handleOutsideClick);
-  
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  },  [suggestionClickedRef]);
+  },  []);
+
 
   
   

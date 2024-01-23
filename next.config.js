@@ -7,6 +7,10 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    domains: ["cdn-icons-png.flaticon.com", "upload.wikimedia.org"],
+    domains: [
+      "cdn-icons-png.flaticon.com",
+      "upload.wikimedia.org",
+      "m.media-amazon.com",
+    ],
   },
 };

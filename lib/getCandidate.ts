@@ -2,8 +2,8 @@ import { google, sheets_v4 } from "googleapis";
 
 let cachedData: sheets_v4.Schema$ValueRange | undefined;
 let lastFetchTimestamp: number = 0;
-const cacheTimeout = 24 * 60 * 60 * 1000;
-
+const cacheTimeout = 1;
+// 24 * 60 * 60 * 1000
 const email = process.env.GOOGLE_CLIENT_EMAIL
 const key = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
 const sheetId = process.env.GOOGLE_SHEET_ID
@@ -54,14 +54,16 @@ async function getCandidates(): Promise<sheets_v4.Schema$ValueRange> {
 ;}
 
 export function cleanString(input: string): string {
-  // Transform the input: make it case-insensitive, omit symbols, remove zeros, hyphens, commas, and replace 2 with "
-  return input
+ 
+  const output = input
     .toLowerCase()
-    .replace(/[^a-zA-Z1-9]/g, '')
-    .replace(/[-0]/g, '')
+    .replace(/[^a-zA-Z0-9]/g, '')
+    .replace(/\b0+(\d+)\b/g, '$1')
     .replace(/,/g, '')
     .replace(/2c/g, '')
     .replace(/na/g, '');
+
+  return output
 }
 
 export async function getSearchedCandidate(term: string, index: number): Promise<string[][] | undefined> {
